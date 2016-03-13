@@ -1,0 +1,25 @@
+{
+  "name": "jQuery.ptTimeSelect",
+  "homepage": "http://pttimeselect.sourceforge.net",
+  "authors": [
+    "Paul Tavares"
+  ],
+  "description": "Time Picker plugin for jQuery",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "timepicker",
+    "timeselect"
+  ],
+  "dependencies": {
+    "jQuery": ">1.3.2"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
