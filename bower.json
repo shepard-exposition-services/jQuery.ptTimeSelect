@@ -4,6 +4,10 @@
   "authors": [
     "Paul Tavares"
   ],
+  "main":[
+   "jquery.ptTimeSelect.css",
+   "jquery.ptTimeSelect.js"
+  ],
   "description": "Time Picker plugin for jQuery",
   "main": "",
   "moduleType": [],
