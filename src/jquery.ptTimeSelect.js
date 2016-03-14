@@ -279,11 +279,58 @@
                     + jQuery('#ptTimeSelectUserSelMin').text()
                     + " "
                     + jQuery('#ptTimeSelectUserSelAmPm').text();
-        jQuery(".isPtTimeSelectActive").val(tSel);
+
+        var i = jQuery(".isPtTimeSelectActive");
+
+        if(i.attr('type') == 'time'){
+            i.val(jQuery.ptTimeSelect.convertFromAMPM(tSel));
+        }else{
+            i.val(tSel);
+        }
+
         this.closeCntr();
         
     };// END setTime() function
-        
+
+    /**
+     * Converts a 24 hours formated time into a 12 hours formated time
+     *
+     *
+     * @private
+     * @return {undefined}
+     */
+    jQuery.ptTimeSelect.convertFrom24 = function(time) {
+            // Check correct time format and split into components
+            time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+            if (time.length > 1) { // If time format correct
+                time = time.slice (1);  // Remove full string match value
+                time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+                time[0] = +time[0] % 12 || 12; // Adjust hours
+            }
+            return time.join (''); // return adjusted time or original string
+    };// END convertFrom24() function
+
+    /**
+     * Converts a 12 hours formated time into a 24 hours formated time
+     *
+     *
+     * @private
+     * @return {undefined}
+     */
+    jQuery.ptTimeSelect.convertFromAMPM = function(time){
+
+        var hours = Number(time.match(/^(\d+)/)[1]);
+        var minutes = Number(time.match(/:(\d+)/)[1]);
+        var AMPM = time.match(/\s(.*)$/)[1];
+        if(AMPM == "PM" && hours<12) hours = hours+12;
+        if(AMPM == "AM" && hours==12) hours = hours-12;
+        var sHours = hours.toString();
+        var sMinutes = minutes.toString();
+        if(hours<10) sHours = "0" + sHours;
+        if(minutes<10) sMinutes = "0" + sMinutes;
+        return sHours + ":" + sMinutes;
+    };// END convertFromAMPM() function
+
     /**
      * Displays the time definition area on the page, right below
      * the input field.  Also sets the custom colors/css on the
@@ -304,6 +351,7 @@
         var i               = jQuery(ele).eq(0).addClass("isPtTimeSelectActive");
         var opt             = i.data("ptTimeSelectOptions");
         var style           = i.offset();
+        var time            = '';
         style['z-index']    = opt.zIndex;
         style.top           = (style.top + i.outerHeight());
         if (opt.containerWidth) {
@@ -313,12 +361,19 @@
             cntr.addClass(opt.containerClass);
         }
         cntr.css(style);
+
+        if(i.attr('type') == 'time'){
+            time = jQuery.ptTimeSelect.convertFrom24(i.val());
+        }else{
+            time = i.val();
+        }
+
         var hr    = 1;
         var min   = '00';
         var tm    = 'AM';
-        if (i.val()) {
+        if (time) {
             var re = /([0-9]{1,2}).*:.*([0-9]{2}).*(PM|AM)/i;
-            var match = re.exec(i.val());
+            var match = re.exec(time);
             if (match) {
                 hr    = match[1] || 1;
                 min    = match[2] || '00';
