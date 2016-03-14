@@ -288,6 +288,8 @@
             i.val(tSel);
         }
 
+        i.trigger('change');
+
         this.closeCntr();
         
     };// END setTime() function
