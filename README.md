@@ -1,4 +1,4 @@
-#jQuery.ptTileSelect.js
+#jQuery.ptTimeSelect.js
 jQuery plugin for displaying a popup that allows a user to define a time and set that time back to a form's input field.
 
  * @version 0.8
