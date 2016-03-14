@@ -9,7 +9,6 @@
    "src/jquery.ptTimeSelect.js"
   ],
   "description": "Time Picker plugin for jQuery",
-  "main": "",
   "moduleType": [],
   "keywords": [
     "timepicker",
