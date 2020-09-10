@@ -1,0 +1,26 @@
+{
+  "name": "jquery.pttimeselect",
+  "version": "0.8.0",
+  "description": "Time Picker plugin for jQuery",
+  "main":[
+   "src/jquery.ptTimeSelect.css",
+   "src/jquery.ptTimeSelect.js"
+  ],
+  "directories": {
+    "doc": "doc",
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickygilleland/jQuery.ptTimeSelect.git"
+  },
+  "author": "Paul Tavares",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rickygilleland/jQuery.ptTimeSelect/issues"
+  },
+  "homepage": "https://github.com/rickygilleland/jQuery.ptTimeSelect#readme"
+}
